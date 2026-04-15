@@ -1,0 +1,39 @@
+@import url(style-form.css);
+@import url(style-lista.css);
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Lucida Sans';
+    box-sizing: border-box;
+}
+
+:root {
+    --cor01: #35557f;
+    --cor02: #ffffff;
+    --cor03: #1c672f;
+    --cor04: #8e0606;
+}
+
+#geral {
+    margin: 20px auto;
+    padding: 2cqmax;
+    width: 550px;
+    min-height: 600px;
+    border-radius: 8px;
+    background-color: var(--cor01);
+}
+
+h1 {
+    text-align: center;
+    color: var(--cor02);
+    padding: 10px 0px;
+
+}
+
+#div-form, #div-lista {
+    background-color: var(--cor02);
+    padding: 10px;
+    margin: 20px 0px;
+    border-radius: 8px;
+}
