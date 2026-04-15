@@ -14,3 +14,29 @@
     height: 12px;
     margin: 0px 10px;
 }
+
+.ax{
+    background-color: #e4f317 ;
+}
+
+.n{
+    background-color: #85b6f5 ;
+}
+
+.sb{
+    background-color: #83810d;
+}
+
+.o1{
+    background-color: #e99d9d;
+}
+
+.o2{
+    color: #fffefe;
+    background-color: #e45252;
+}
+
+.o3{
+    color: #fffefe;
+    background-color: #7c0f0f;
+}
