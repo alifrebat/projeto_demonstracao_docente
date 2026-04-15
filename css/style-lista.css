@@ -1,0 +1,9 @@
+.div-pessoa-item{
+    margin: 10px 0px;
+    padding: 0px 5px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cor01);
+}
