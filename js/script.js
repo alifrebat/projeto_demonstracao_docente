@@ -9,8 +9,6 @@ const pessoas = []
 formulario.addEventListener('submit', (evt) => {
     evt.preventDefault()
     const dadosPessoa = new FormData(formulario)
-    
-    let sexoSelecionado = ''
 
     let idade = calcIdade(dadosPessoa.get('data-nascimento'))
 
@@ -19,7 +17,7 @@ formulario.addEventListener('submit', (evt) => {
         sexo: dadosPessoa.get('sexo'),
         idade: idade,
         peso: dadosPessoa.get('peso'),
-        altura: dadosPessoa.get('altua')
+        altura: dadosPessoa.get('altura')
     }
 
 
@@ -31,16 +29,24 @@ formulario.addEventListener('submit', (evt) => {
 
 //CALCULANDO A IDADE
 const calcIdade = (dataNascimento) => {
+
+    const nascimento = new Date(dataNascimento)
     const hoje = new Date()
 
-    let idade = hoje.getFullYear() - dataNascimento.getFullYear()
+    let idade = hoje.getFullYear() - nascimento.getFullYear()
+
+    if ((nascimento > hoje)) {
+        idade--
+    } 
 
     return idade
 }
 
+
+
 //ADICIONAR OBJETO PESSOA
 const addPessoa = (objPessoa) => {
-    if(objPessoa != null){
+    if (objPessoa != null) {
         pessoas.push(objPessoa)
     }
 }
