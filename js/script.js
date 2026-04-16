@@ -24,4 +24,14 @@ formulario.addEventListener('submit', (evt) => {
 
 })
 
+//CALCULANDO A IDADE
+const calcIdade = ( dataNascimento)=>{
+    const hoje = new Date()
+
+    let idade = hoje.getFullYear() - dataNascimento.getFullYear()
+
+    return idade
+}
+
+
 
