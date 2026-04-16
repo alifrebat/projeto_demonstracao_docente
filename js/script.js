@@ -9,18 +9,23 @@ const pessoas = []
 formulario.addEventListener('submit', (evt) => {
     evt.preventDefault()
     const dadosPessoa = new FormData(formulario)
-
-    let sexoSelecionado = dadosPessoa.get(sexo).checked
+    
+    let sexoSelecionado = ''
 
     let idade = calcIdade(dadosPessoa.get('data-nascimento'))
 
     const Pessoa = {
         nome: dadosPessoa.get('nome'),
-        sexo: sexoSelecionado,
+        sexo: dadosPessoa.get('sexo'),
         idade: idade,
         peso: dadosPessoa.get('peso'),
         altura: dadosPessoa.get('altua')
     }
+
+
+    console.log(Pessoa)
+
+    addPessoa(Pessoa)
 
 })
 
