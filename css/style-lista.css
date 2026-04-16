@@ -1,11 +1,16 @@
 .div-pessoa-item {
+    min-height: 80px;
     margin: 10px 0px;
-    padding: 0px 5px;
+    padding: 0px 10px;
     height: 40px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     color: var(--cor01);
+}
+
+.div-pessoa-item {
+    line-height: 25px;
 }
 
 .div-pessoa-item img {
