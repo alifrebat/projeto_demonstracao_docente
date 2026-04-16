@@ -8,6 +8,7 @@ const pessoas = []
 //CAPTURANDO O EVENTO SUBMIT DO FORMULÁRIO
 formulario.addEventListener('submit', (evt) => {
     evt.preventDefault()
+    
     const dadosPessoa = new FormData(formulario)
 
     const dadoPeso = dadosPessoa.get('peso').replaceAll(',','.')
@@ -33,6 +34,8 @@ formulario.addEventListener('submit', (evt) => {
     console.log(Pessoa)
 
     addPessoa(Pessoa)
+
+    formulario.reset()
 
 })
 
