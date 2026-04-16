@@ -30,12 +30,13 @@ formulario.addEventListener('submit', (evt) => {
         situacao: resultadoSituacao,
     }
 
-
     console.log(Pessoa)
 
     addPessoa(Pessoa)
 
     formulario.reset()
+
+    listarPessoa()
 
 })
 
@@ -84,6 +85,25 @@ const addPessoa = (objPessoa) => {
     if (objPessoa != null) {
         pessoas.push(objPessoa)
     }
+}
+
+//LISTAR PESSOAS
+const listarPessoa = () =>{
+    divLista.innerHTML = ''
+
+    let sitClass = ''
+    pessoas.forEach((elem, i)=>{
+        const divPessoaItem = document.createElement('div')
+        
+        sitClass = elem.imc < 19 ? 'ax' : elem.imc < 25 ? 'n' : elem.imc < 30 ? 'sb' : elem.imc < 35 ? 'o1' : elem.imc < 40 ? 'o2' : 'o3'
+
+        divPessoaItem.setAttribute('class', `div-pessoa-item ${sitClass}`)
+        divPessoaItem.innerHTML = `<span> ${i + 1} - ${elem.nome} - ${elem.sexo} - ${elem.idade}anos -${parseFloat(elem.imc).toFixed(2).replaceAll('.',',')} - ${elem.situacao}</span> <img src='imagens/btn_excluir.png' alt='Remover' title='Remover'/> `
+
+        divLista.appendChild(divPessoaItem)
+
+    })
+
 }
 
 
