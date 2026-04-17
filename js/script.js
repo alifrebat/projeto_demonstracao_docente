@@ -8,11 +8,11 @@ const pessoas = []
 //CAPTURANDO O EVENTO SUBMIT DO FORMULÁRIO
 formulario.addEventListener('submit', (evt) => {
     evt.preventDefault()
-    
+
     const dadosPessoa = new FormData(formulario)
 
-    const dadoPeso = dadosPessoa.get('peso').replaceAll(',','.')
-    const dadoAltura = dadosPessoa.get('altura').replaceAll(',','.')
+    const dadoPeso = dadosPessoa.get('peso').replaceAll(',', '.')
+    const dadoAltura = dadosPessoa.get('altura').replaceAll(',', '.')
 
     const idade = calcIdade(dadosPessoa.get('data-nascimento'))
 
@@ -62,22 +62,20 @@ const calcIMC = (peso, altura) => {
 
 //IDENTIFICANDO A SITUAÇÃO
 const situacaoIMC = (imc) => {
-    if (imc < 18.5){
+    if (imc < 18.5) {
         return 'Abaixo do peso'
-    }else if(imc < 25){
-        return  'Normal' 
-    }else if(imc < 30){
-        return 'Sobrepeso'        
-    }else if(imc < 35){
-        return 'Obesidade I'        
-    }else if(imc < 40){
-        return 'Obesidade II'        
-    }else{
+    } else if (imc < 25) {
+        return 'Normal'
+    } else if (imc < 30) {
+        return 'Sobrepeso'
+    } else if (imc < 35) {
+        return 'Obesidade I'
+    } else if (imc < 40) {
+        return 'Obesidade II'
+    } else {
         return 'Obesidade III'
     }
 }
-
-
 
 //ADICIONAR OBJETO PESSOA
 const addPessoa = (objPessoa) => {
@@ -86,20 +84,41 @@ const addPessoa = (objPessoa) => {
     }
 }
 
+//EXCLUIR OBJETO PESSOA
+const excluirPessoa = (pos) => {
+    if (pos >= 0) {
+        pessoas.splice(pos, 0)
+        
+        listarPessoa()
+    }
 
+}
 
 //LISTAR PESSOAS
-const listarPessoa = () =>{
+const listarPessoa = () => {
     divLista.innerHTML = ''
 
     let sitClass = ''
-    pessoas.forEach((elem, i)=>{
+    pessoas.forEach((elem, i) => {
+        
         const divPessoaItem = document.createElement('div')
         
         sitClass = elem.imc < 19 ? 'ax' : elem.imc < 25 ? 'n' : elem.imc < 30 ? 'sb' : elem.imc < 35 ? 'o1' : elem.imc < 40 ? 'o2' : 'o3'
-
+        
         divPessoaItem.setAttribute('class', `div-pessoa-item ${sitClass}`)
-        divPessoaItem.innerHTML = `<span> ${i + 1} - ${elem.nome} - ${elem.sexo} - ${elem.idade}anos -${parseFloat(elem.imc).toFixed(2).replaceAll('.',',')} - ${elem.situacao}</span> <img src='imagens/btn_excluir.png' alt='Remover' title='Remover'/> `
+        divPessoaItem.innerHTML = `<span> ${i + 1} - ${elem.nome} - ${elem.sexo} - ${elem.idade}anos -${parseFloat(elem.imc).toFixed(2).replaceAll('.', ',')} - ${elem.situacao}</span>`
+
+        const btnExcluir = document.createElement('img')
+        btnExcluir.setAttribute('src', 'imagens/btn_excluir.png')
+        btnExcluir.setAttribute('alt', `Excluir ${elem.nome}?`)
+        btnExcluir.setAttribute('title', `Excluir ${elem.nome}?`)
+        btnExcluir.addEventListener('click',()=>{
+            if(confirm(`Tem certeza que deseja exlcuir ${elem.nome}`)){
+                excluirPessoa(i)
+            }
+        })
+
+        divPessoaItem.appendChild(btnExcluir)
 
         divLista.appendChild(divPessoaItem)
 
