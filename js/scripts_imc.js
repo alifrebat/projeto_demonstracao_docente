@@ -1,3 +1,5 @@
+import { salvarDados } from "./script_api.js"
+
 //PEGANDO ELEMENTOS DO DOM
 const formImc = document.querySelector("#formulario")
 const btnEnviar = document.querySelector("#btn-enviar")
@@ -18,7 +20,10 @@ btnEnviar.addEventListener('click', (evt) => {
         data_nascimento: formPessoa.get('data-nascimento'),
         peso: formPessoa.get('peso'),
         altura: formPessoa.get('altura')
-
     }
+
+    const resultadoSalvar = await salvarDados(objPessoa);
+
+    formImc.reset()
 
 })

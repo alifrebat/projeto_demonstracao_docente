@@ -21,6 +21,7 @@ const salvarDados = async (objPessoa) => {
     } catch (erro) {
         console.log("ERRO AO CADASTRAR ", erro)
     }
-
 }
+
+export{salvarDados}
 
