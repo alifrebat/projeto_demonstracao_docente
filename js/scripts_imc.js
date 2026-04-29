@@ -1,4 +1,4 @@
-import { salvarDados, consultarPessoas } from "./script_api.js"
+import { salvarDados, consultarPessoas, excluirPessoa } from "./script_api.js"
 
 //PEGANDO ELEMENTOS DO DOM
 const formImc = document.querySelector("#formulario")
@@ -24,6 +24,8 @@ btnEnviar.addEventListener('click', async (evt) => {
 
     const resultadoSalvar = await salvarDados(objPessoa)
 
+    console.log('CADASTRO ',resultadoSalvar.status())
+
     formImc.reset()
 
     listarPessoa()
@@ -47,7 +49,10 @@ const listarPessoa = async () => {
         btnExcluir.setAttribute('title', 'Excluir')
 
         btnExcluir.addEventListener('click',()=>{
-            alert('Recurso em construção')
+            if(confirm(`Deseja excluir ${elem.nome}?`)){
+                excluirPessoa(elem.idpessoa)
+                window.location = 'index.html'
+            }
         })
 
         divPessoa.appendChild(btnExcluir)
