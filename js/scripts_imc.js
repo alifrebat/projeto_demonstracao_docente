@@ -1,4 +1,4 @@
-import { salvarDados } from "./script_api.js"
+import { salvarDados, consultarPessoas } from "./script_api.js"
 
 //PEGANDO ELEMENTOS DO DOM
 const formImc = document.querySelector("#formulario")
@@ -9,7 +9,7 @@ const divLista = document.querySelector("#div-lista")
 const pessoas = []
 
 //CAPTURANDO O EVENTO DE CLICK NO BOTÃO ENVIAR
-btnEnviar.addEventListener('click', (evt) => {
+btnEnviar.addEventListener('click', async (evt) => {
     evt.preventDefault()
 
     const formPessoa = new FormData(formImc)
@@ -22,7 +22,7 @@ btnEnviar.addEventListener('click', (evt) => {
         altura: formPessoa.get('altura')
     }
 
-    const resultadoSalvar = await salvarDados(objPessoa);
+    const resultadoSalvar = await salvarDados(objPessoa)
 
     formImc.reset()
 
