@@ -4,6 +4,7 @@ import { salvarDados, consultarPessoas, excluirPessoa, alterarDados } from "./sc
 const formImc = document.querySelector("#formulario")
 const btnEnviar = document.querySelector("#btn-enviar")
 const divLista = document.querySelector("#div-lista")
+const btnLimpar = document.querySelector("#btn-limpar")
 
 //ARRAY PESSOA
 let pessoas = []
@@ -14,8 +15,10 @@ btnEnviar.addEventListener('click', async (evt) => {
 
     const formPessoa = new FormData(formImc)
 
+    const id_pessoa = sessionStorage.getItem('objPessoaId') === null ? 0 : sessionStorage.getItem('objPessoaId')
+
     const objPessoa = {
-        idpessoa: sessionStorage.getItem('objPessoaId') === null ? 0 : sessionStorage.getItem('objPessoaId'),
+        idpessoa: id_pessoa,
         nome: formPessoa.get('nome'),
         sexo: formPessoa.get('sexo'),
         data_nascimento: formPessoa.get('data-nascimento'),
@@ -23,17 +26,22 @@ btnEnviar.addEventListener('click', async (evt) => {
         altura: formPessoa.get('altura').replaceAll(',', '.')
     }
 
-    if (sessionStorage.getItem('objPessoaId') === null)  {
+    if (id_pessoa === 0) {
         cadastroPessoa(objPessoa)
     } else {
-        console.log(objPessoa)
-
-         if (confirm(`Alterar Pessoa?`)) {
-             alterarPessoa(objPessoa)
-         }
+        if (confirm(`Alterar Pessoa?`)) {
+            alterarPessoa(objPessoa)
+        }
     }
 
     formImc.reset()
+})
+
+btnLimpar.addEventListener('click', () => {
+    if( sessionStorage.getItem('objPessoaId') != null){
+        sessionStorage.removeItem('objPessoaId')
+    }
+        
 })
 
 //LISTA OS DADOS NA DIV LISTA
@@ -76,7 +84,7 @@ const listarPessoa = async () => {
 
         btnAlterar.addEventListener('click', () => {
             carregaForm(elem)
-            window.location.href='#tito'
+            window.location.href = '#tito'
 
             sessionStorage.setItem('objPessoaId', elem.idpessoa)
         })
