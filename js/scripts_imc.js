@@ -22,7 +22,11 @@ btnEnviar.addEventListener('click', async (evt) => {
         altura: formPessoa.get('altura').replaceAll(',', '.')
     }
 
-
+    if (sessionStorage.getItem('objPessoa') === null) {
+        cadastroPessoa(objPessoa)
+    }else{
+        alert('alterar em construção')
+    }
 
     formImc.reset()
 
