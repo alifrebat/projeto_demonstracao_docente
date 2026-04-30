@@ -57,5 +57,29 @@ const excluirPessoa = async (idPessoa) => {
     }
 }
 
-export { salvarDados, consultarPessoas, excluirPessoa }
+//ADICIONAR NO BANCO DE DADOS
+const alterarDados = async (objPessoa) => {
+    const endPoint = `https://localhost:7015/api/Pessoa/${objPessoa.idpessoa}`
+
+    try {
+        const resposta = await fetch(
+            endPoint, {
+            method: 'PUT',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(objPessoa)
+        })
+
+        if (!resposta.ok) {
+            const txtErro = await resposta.text();
+            throw new Error(txtErro);
+        }
+
+        const dados = await resposta.json()
+        return dados
+
+    } catch (erro) {
+        console.log("ERRO AO CADASTRAR ", erro)
+    }
+}
+export { salvarDados, consultarPessoas, excluirPessoa, alterarDados }
 
