@@ -15,6 +15,33 @@
     line-height: 25px;
 }
 
+.divDados{
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.divDadosImc{
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+}
+
+.divImg{
+    width: 35%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.divImg img{
+    width: 40px;
+    height: 70px;
+}
+
 .txtNome {
     font-size: 1.5em;
     text-transform: uppercase;
@@ -34,7 +61,7 @@
     height: 10px;
 }
 
-.btnOp {
+.div-pessoa-item img {
     cursor: pointer;
     width: 15px;
     height: 15px;
@@ -44,34 +71,43 @@
 .ax {
     border-left: 10px solid #cfa68b;
     border-bottom: 8px solid #cfa68b;
+<<<<<<< HEAD
+=======
+    background-color: #f8ece4;
+>>>>>>> 5b2a473455583ced89dec8c50c36423af22a5fbd
 }
 
 .n {
     border-left: 10px solid #09933e;
     border-bottom: 8px solid #09933e;
-
 }
 
 .sb {
-    border-left: 10px solid #9a9331;
-    border-bottom: 8px solid #9a9331;
-    background-color: #ffe602;
+    border-left: 10px solid #F6AF14;
+    border-bottom: 8px solid #F6AF14;
 }
 
 .o1 {
     border-left: 10px solid #bb7272;
     border-bottom: 8px solid #bb7272;
+<<<<<<< HEAD
+=======
+    background-color: #fcb0b0;
+>>>>>>> 5b2a473455583ced89dec8c50c36423af22a5fbd
 }
 
 .o2 {
     border-left: 10px solid #993939;
     border-bottom: 8px solid #993939;
+<<<<<<< HEAD
+=======
+    color: #ffffff;
+    background-color: #750e0e;
+>>>>>>> 5b2a473455583ced89dec8c50c36423af22a5fbd
 }
 
 .o3 {
-    border-left: 10px solid #f66e6e;
-    border-bottom: 8px solid #f66e6e;
-    color: #ffffff;
-    background-color: #000000;
+    border-left: 10px solid #000000;
+    border-bottom: 8px solid #000000;
 }
 

@@ -57,13 +57,12 @@ const listarPessoa = async () => {
 
         let sitClass = imc < 18.5 ? 'ax' : imc < 25 ? 'n' : imc < 30 ? 'sb' : imc < 35 ? 'o1' : imc < 40 ? 'o2' : 'o3'
 
-        let caminhoImagemSit  = elem.sexo === 'F' ? imc < 18.5  ? 'imagens/situacao/img_fem_abaixo.png' : imc < 25 ? 'imagens/situacao/img_fem_normal.png': imc < 30 ? 'imagens/situacao/img_fem_sobrepeso.png' : imc < 35  ? 'imagens/situacao/img_fem_obesidade_i.png' : imc < 40 ? 'imagens/situacao/img_fem_obesidade_ii.png' : 'imagens/situacao/img_fem_obesidade_iii.png' :imc < 18.5  ? 'imagens/situacao/img_masc_abaixo.png' : imc < 25 ? 'imagens/situacao/img_masc_normal.png': imc < 30 ? 'imagens/situacao/img_masc_sobrepeso.png' : imc < 35  ? 'imagens/situacao/img_masc_obesidade_i.png' : imc < 40 ? 'imagens/situacao/img_masc_obesidade_ii.png' : 'imagens/situacao/img_masc_obesidade_iii.png'
-
         const divPessoa = document.createElement('div')
         divPessoa.setAttribute('class', `div-pessoa-item ${sitClass}`)
-        divPessoa.innerHTML = `<span class='txtNome'> ${i + 1}  ${elem.nome} </span> <span> Sexo: ${elem.sexo};  Idade: ${calcIdade(elem.dataNascimento)}anos;  Peso: ${elem.peso}kg; Altura: ${elem.altura}m </span> <span  class='txtImc'> IMC: ${imc.toFixed(2).replaceAll('.', ',')} </span> <span class='txtImc'> Situação: ${situacaoIMC(imc)} </span> <span> <img src='${caminhoImagemSit}' class='imgsit' /></span>`
+        divPessoa.innerHTML = `<span class='txtNome'> ${i + 1}  ${elem.nome} </span> <span> Sexo: ${elem.sexo};  Idade: ${calcIdade(elem.dataNascimento)}anos;  Peso: ${elem.peso}kg; Altura: ${elem.altura}m </span> <span  class='txtImc'> IMC: ${imc.toFixed(2).replaceAll('.', ',')} </span> <span class='txtImc'> Situação: ${situacaoIMC(imc)} </span>`
 
         const divBtns = document.createElement('div')
+        divBtns.setAttribute('class','btnsImg')
 
         const btnExcluir = document.createElement('img')
         btnExcluir.setAttribute('src', 'imagens/btn_excluir.png')
